@@ -6,7 +6,7 @@
 
 <p>The DICE model is an example of how models are used in climate science and policy. It is an integrated assessment computerized model that pulls together economics and science to help understand the dynamics and policy aspects of climate change.</p>
 
-<p>Other descriptions and earlier models and results can be found on the [author's web site](http://nordhaus.econ.yale.edu/).</p>
+<p>Other descriptions and earlier models and results can be found on the author's web site: http://nordhaus.econ.yale.edu/.</p>
 
 <p>For a longer description, see the User's Manual for DICE-2013R, Second edition, by William Nordhaus with Paul Sztorc (2013), available in the documentation folder.</p>
 
