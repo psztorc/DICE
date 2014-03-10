@@ -32,7 +32,7 @@ parameters
         k0       Initial capital value (trill 2005 USD)           /135     /
         a0       Initial level of total factor productivity       /3.80    /
         ga0      Initial growth rate for TFP per 5 years          /0.079   /
-        dela     Decline rate of TFP per 5 years                  /0.006   /
+        dela     Decline rate of TFP per year                     /0.006   /
 
 ** Emissions parameters
         gsigma1  Initial growth of sigma (per year)                   /-0.01   /
