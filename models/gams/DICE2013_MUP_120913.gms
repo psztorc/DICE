@@ -14,7 +14,7 @@ parameters
 * Scenarios
         BaseLoop          /0/
         AmpereLoop        /0/
-        Base3tLoop        /1/
+        Base3tLoop        /0/
 
         BaseRun           /0/
         OptRun            /0/
@@ -22,6 +22,8 @@ parameters
         SternRun          /0/
         SternCalibRun     /0/
         CopenRun          /0/
+
+        BaseSeq           /1/
 
 * Comparison Assistance
         IgnoreHotelling   /0/
@@ -364,9 +366,11 @@ file results5 /Output\New2013Lim2t.csv/;       results5.nd = 10 ; results5.nw = 
 file results6 /Output\New2013Stern.csv/;       results6.nd = 10 ; results6.nw = 0 ; results6.pw=1200; results6.pc=5;
 file results7 /Output\New2013SternCalib.csv/;  results7.nd = 10 ; results7.nw = 0 ; results7.pw=1200; results7.pc=5;
 file results8 /Output\New2013Copen.csv/;       results8.nd = 10 ; results8.nw = 0 ; results8.pw=1200; results8.pc=5;
+file results9 /Output\New2013Seq.csv/;         results9.nd = 10 ; results9.nw = 0 ; results9.pw=1200; results9.pc=5;
 
 *Loops
 $include Include\def_loop.gms
+$include Include\def_sequence.gms
 
 
 *Base Loops Run
@@ -440,18 +444,25 @@ $include Include\def_sternCalib_cleanup.gms
 );
 
 *Copenhagen Run
-*$include Include\CopenPartFrac.gms
-*$include Include\ExogenECR.gms
+$include Include\CopenPartFrac.gms
+$include Include\ExogenECR.gms
 
 If (CopenRun eq 1,
     put results8;
-*$include Include\def_Copen.gms
-*$include Include\PutOutputAllT.gms
-*$include Include\def_Copen_cleanup.gms
+$include Include\def_Copen.gms
+$include Include\PutOutputAllT.gms
+$include Include\def_Copen_cleanup.gms
     putclose;
 );
 
+*Base Sequences
 
-*display s.l, cprice.l, AmpereCpriceBoundary, ImportedMiu, miu.l, partfract, tatm.l,mat.l;
+If (BaseSeq eq 1,
+    put results9;
+$include Include\def_BaseSeq.gms
+    putclose;
+);
+
+display Y.l, MAT.l, TATM.l;
 *display L,lbase,al,albase,e.l,eeq.m,eeq.l,S.l;
 *display s.l,L,lbase,al,albase,cprice.l,cpricebase,photel,pbacktime;

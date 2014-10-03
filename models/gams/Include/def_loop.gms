@@ -7,10 +7,11 @@ $offtext
 
 * [Section 1 of 2] Scalar Section (not a function of T)
 Set
-    TSP_mup      Tsp scalar values    /"1.0","1.4","2.9","4.4","5.9"/;
-*    TSP_mup      Tsp scalar values    /"2.9"/;
+  TSP_mup      Tsp scalar values    /"1.0","1.4","2.9","4.4","5.9"/;
+*  TSP_mup      Tsp scalar values    /"2.034938033"/;
 
 * [Section 2 of 2] Vector Section(variables are a function of T and must be rescaled in a loop (before entering into the model in a later loop))
+
 
 Sets
 
@@ -25,6 +26,9 @@ Sets
     T_stop(t)   =    not T_loop(t);
 
 *Scenario Information goes here
+
+
+
 Table mupTable(Vars,Scenarios)
 
               1          2            3          4            5
