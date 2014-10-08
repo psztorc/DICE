@@ -2,7 +2,7 @@
 Loop (Scenarios_seq,
 
 *     Set this value directly (easier for scalars than vectors [below])
-     t2xco2 = mupTable_seq("TSP_seq",Scenarios_seq);
+     t2xco2 = mupTable_seq(Scenarios_seq,"TSP_seq");
 
 *     Redeclare some later steps
      lam = fco22x/t2xco2;
