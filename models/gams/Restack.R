@@ -3,12 +3,11 @@ rm(list=ls())
 
 #Parameters
 ScalingFile <- c("Output/1_ScalingTable.csv")
-InFiles <- c("Output/New2013Base_Loops.csv","Output/New2013Amp_Loops.csv","New2013BaseL3t.csv")
-#InFile1 <- "Output/New2013_Loops.csv"
-BigList <- c("Base","Amp","Base3t")
+InFiles <- c("Output/New2013Base_Loops.csv","Output/New2013Amp_Loops.csv") #,"New2013BaseL3t.csv" c("Output/New2013Seq.csv")
+
 
 #
-try(setwd('C:\\Users\\ps583\\Dropbox\\Paul S Yale Work\\Paul - Bill - Shared Folder\\Dice 2013 and Climate\\Latest\\MUP Project\\Dice MUP'))
+try(setwd('C:/Users/ps583/Documents/GitHub/DICE/models/gams'))
 
 BigN <- length(InFiles)
 
@@ -57,6 +56,7 @@ RestackFile <- function(FileName="Output/New2013Base_Loops.csv") { #function of 
 print("Restacking Files...")
 Data <- RestackFile("Output/New2013Base_Loops.csv")
 DataA <- RestackFile("Output/New2013Amp_Loops.csv")
-DataB <- RestackFile("Output/New2013BaseL3t.csv")
+# # DataB <- RestackFile("Output/New2013BaseL3t.csv")
+# DataC <- RestackFile("Output/New2013Seq.csv")
 print("Done")
 

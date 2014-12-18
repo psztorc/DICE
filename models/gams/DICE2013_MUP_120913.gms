@@ -12,8 +12,8 @@ set        t          Time periods (5 years per period)    /1*60/ ;
 parameters
 
 * Scenarios
-        BaseLoop          /0/
-        AmpereLoop        /0/
+        BaseLoop          /1/
+        AmpereLoop        /1/
         Base3tLoop        /0/
 
         BaseRun           /0/
@@ -23,11 +23,12 @@ parameters
         SternCalibRun     /0/
         CopenRun          /0/
 
-        BaseSeq           /1/
+        BaseSeq           /0/
 
 * Comparison Assistance
-        IgnoreHotelling   /0/
-        FixSavingsAtTwo   /0/
+        IgnoreHotelling  /0/
+        FixSavingsAt24   /0/
+        InfiniteCarbon   /1/
 
 
 **Time Step
@@ -305,6 +306,7 @@ EQUATIONS
  util..               UTILITY        =E= tstep * scale1 * sum(t,  CEMUTOTPER(t)) + scale2 ;
 
 *Resource limit
+fosslim$(InfiniteCarbon eq 1) = 6000000;
 CCA.up(t)       = fosslim;
 
 * Control rate limits
@@ -331,7 +333,7 @@ set lag10(t) ;
 lag10(t) =  yes$(t.val gt card(t)-10);
 S.FX(lag10(t)) = optlrsav;
 
-S.FX(t)$(FixSavingsAtTwo  eq 1) = .2;
+S.FX(t)$(FixSavingsAt24  eq 1) = .24;
 *    fixes savings rate to compare across Excel-Gams versions, only if the Variable is /1/.
 
 *Initial Conditions

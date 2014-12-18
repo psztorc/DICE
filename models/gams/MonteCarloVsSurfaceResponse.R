@@ -1,5 +1,7 @@
 
 
+setwd("~/GitHub/DICE/models/gams")
+
 Nsample <- 100
 
 DF <- data.frame( 
@@ -21,6 +23,11 @@ NewData <- data.frame(
   "TFP.Factor" = c(1, runif(Nsample,min=.99,max=1.01) ),
   "Pop.Factor" = c(1, runif(Nsample,min=.99,max=1.01) ))  
 
+NewData <- data.frame(
+  "TmpCoef.Value" = rep( c(1,1.4,2.9,4.4,5.9), each=25 ), 
+  "TFP.Factor" = rep( rep( c(.99, .995, 1, 1.005, 1.01), each=5), times=5),
+  "Pop.Factor" = rep( c(.99, .995, 1, 1.005, 1.01), times = 25) ) 
+
 NewData$TFP.LA <- predict(m2,newdata = NewData)
 
 GAMS_Inputs <- NewData
@@ -36,7 +43,7 @@ NewData
 NewData$Output <- predict(object=AllSurfaces$Base$LQI$DICE$A1.Output,newdata=NewData) + 491.227569400
 NewData$Temperature <- predict(object=AllSurfaces$Base$LQI$DICE$F2.Temperature,newdata=NewData) + 3.854605214
 
-
+NewData$Temperature <- predict(object=FitFormsBase1$LQI$DICE$F2.Temperature,newdata=NewData) + 3.854605214
 
 options(width=10000, digits=7)
 sink("ToGams.txt")
@@ -51,7 +58,7 @@ options(width=145)
 options(width=10000, digits=8)
 sink("ToGams2.txt")
 cat( "           ", "TSP_seq   ","gPOP_seq  ", "gTFP_seq  ","\n", sep = " ")
-for(i in 1:(Nsample+1)) {
+for(i in 1:(nrow(GAMS_Inputs))) {
   cat( formatC(i , format="d", digits=5),"   ",
        formatC( GAMS_Inputs$TmpCoef.Value[i] , format='f', digits=8 ),
        formatC( GAMS_Inputs$Pop.Factor[i] , format='f', digits=8 ),
